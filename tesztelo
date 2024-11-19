@@ -1,0 +1,87 @@
+using System;
+using System.Linq;
+
+namespace JelszoVizsgalo
+{
+    public class JelszoEllenorzes
+    {
+        private string titkosJelszo;
+
+        public JelszoEllenorzes()
+        {
+            titkosJelszo = "Titkositottjelszomelyetnemtudsz";
+        }
+
+        public bool TartalmazNagybetut()
+        {
+            return titkosJelszo.Any(char.IsUpper);
+        }
+
+        public bool TartalmazKisbetut()
+        {
+            return titkosJelszo.Any(char.IsLower);
+        }
+
+        public bool TartalmazSzamot()
+        {
+            return titkosJelszo.Any(char.IsDigit);
+        }
+
+      
+        public int JelszoHossza()
+        {
+            return titkosJelszo.Length;
+        }
+    }
+}
+
+
+TESZT: 
+
+
+using NUnit.Framework;
+using JelszoVizsgalo;
+
+namespace JelszoEllenorzesTeszt
+{
+    [TestFixture]
+    public class JelszoTesztje
+    {
+        private JelszoEllenorzes ellenorzo;
+
+        [SetUp]
+        public void Inicializalas()
+        {
+            ellenorzo = new JelszoEllenorzes();
+        }
+
+        [Test]
+        public void NagybetuEllenorzes()
+        {
+            bool eredmeny = ellenorzo.TartalmazNagybetut();
+            Assert.IsTrue(eredmeny);
+        }
+
+        [Test]
+        public void KisbetuEllenorzes()
+        {
+            bool eredmeny = ellenorzo.TartalmazKisbetut();
+            Assert.IsTrue(eredmeny);
+        }
+
+        [Test]
+        public void SzamEllenorzes()
+        {
+            bool eredmeny = ellenorzo.TartalmazSzamot();
+            Assert.IsTrue(eredmeny);
+        }
+
+        
+        [Test]
+        public void HosszEllenorzes()
+        {
+            int hossz = ellenorzo.JelszoHossza();
+            Assert.Greater(hossz, 7);
+        }
+    }
+}
