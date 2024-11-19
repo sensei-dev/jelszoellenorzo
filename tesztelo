@@ -64,7 +64,7 @@ namespace JelszoEllenorzesTeszt
 
         [Test]
         public void KisbetuEllenorzes()
-        {
+        { 
             bool eredmeny = ellenorzo.TartalmazKisbetut();
             Assert.IsTrue(eredmeny);
         }
